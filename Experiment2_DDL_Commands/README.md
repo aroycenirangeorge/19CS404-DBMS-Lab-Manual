@@ -104,12 +104,8 @@ CREATE TABLE Table_Name (
 ```
 ---
 **Question 1**
---Create a table named Invoices with the following constraints:
-
-InvoiceID as INTEGER should be the primary key.
-InvoiceDate as DATE.
-DueDate as DATE should be greater than the InvoiceDate.
-Amount as REAL should be greater than 0.
+---
+![image](https://github.com/user-attachments/assets/c30439c8-26bd-4989-ab87-ee7a4a09ff60)
 
 ```sql
 CREATE TABLE Invoices(InvoiceID INT PRIMARY KEY, InvoiceDate DATE, DueDate DATE CHECK(DueDate>InvoiceDate), Amount REAL CHECK(Amount>0) )
@@ -117,15 +113,12 @@ CREATE TABLE Invoices(InvoiceID INT PRIMARY KEY, InvoiceDate DATE, DueDate DATE 
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/be038b9f-6a4d-42d2-b0fd-023f49315db0)
+
 
 **Question 2**
 ---
--- Create a table named Tasks with the following columns:
-
-TaskID as INTEGER
-TaskName as TEXT
-DueDate as DATE
+![image](https://github.com/user-attachments/assets/1915fe9b-7546-4884-b824-630208fe1102)
 
 ```sql
 CREATE TABLE Tasks(TaskID INTEGER,TaskName TEXT,DueDate DATE)
@@ -133,15 +126,12 @@ CREATE TABLE Tasks(TaskID INTEGER,TaskName TEXT,DueDate DATE)
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/29b7af26-6654-4679-8716-f1522796f407)
+
 
 **Question 3**
 ---
--- Create a table named ProjectAssignments with the following constraints:
-AssignmentID as INTEGER should be the primary key.
-EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
-ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
-AssignmentDate as DATE should be NOT NULL.
+![image](https://github.com/user-attachments/assets/f511f4b4-bf03-45c6-9f7e-170632d8882f)
 
 ```sql
 CREATE TABLE ProjectAssignments(AssignmentID INTEGER, EmployeeID INTEGER, ProjectID INTEGER, AssignmentDate DATE NOT NULL, FOREIGN KEY (EmployeeID) references Employees(EmployeeID), FOREIGN KEY (ProjectID) references Projects(ProjectID))
@@ -149,18 +139,12 @@ CREATE TABLE ProjectAssignments(AssignmentID INTEGER, EmployeeID INTEGER, Projec
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/51b71d35-56d6-45e6-89e1-e2bf13b1a63a)
+
 
 **Question 4**
 ---
--- Create a new table named item with the following specifications and constraints:
-item_id as TEXT and as primary key.
-item_desc as TEXT.
-rate as INTEGER.
-icom_id as TEXT with a length of 4.
-icom_id is a foreign key referencing com_id in the company table.
-The foreign key should set NULL on updates and deletes.
-item_desc and rate should not accept NULL.
+![image](https://github.com/user-attachments/assets/4a921999-333e-452a-8523-5ae47f0367b5)
 
 ```sql
 CREATE TABLE item(item_id TEXT PRIMARY KEY, item_desc TEXT NOT NULL, rate INTEGER NOT NULL,icom_id TEXT CHECK(icom_id>4),FOREIGN KEY (icom_id) references company(com_id) ON UPDATE SET NULL ON DELETE SET NULL)
@@ -168,11 +152,12 @@ CREATE TABLE item(item_id TEXT PRIMARY KEY, item_desc TEXT NOT NULL, rate INTEGE
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/0aa9c37c-79df-40d4-9ea4-e084a13b248c)
+
 
 **Question 5**
 ---
--- Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
+![image](https://github.com/user-attachments/assets/b473724b-a7f0-49c8-8305-2eeddac0ba66)
 
 ```sql
 ALTER TABLE employee ADD department_id INTEGER;
@@ -181,18 +166,13 @@ ALTER TABLE employee ADD manager_id INTEGER DEFAULT NULL
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/e8556fc6-dd93-4149-8821-f1337c602563)
+
 
 **Question 6**
 ---
---Create a new table named orders with the following specifications:
-ord_id as TEXT with a length of 4.
-item_id as TEXT.
-ord_date as DATE.
-ord_qty as INTEGER.
-cost as INTEGER.
-The primary key is a composite key consisting of item_id and ord_date.
-ord_id and item_id should not accept NULL
+![image](https://github.com/user-attachments/assets/25b57c14-bbcd-4223-b470-ef1a3f45d53a)
+
 
 ```sql
 CREATE TABLE orders(ord_id TEXT CHECK(ord_id>4) NOT NULL,item_id TEXT NOT NULL, ord_date DATE, ord_qty INTEGER, cost INTEGER, PRIMARY KEY(item_id,ord_date))
@@ -200,15 +180,12 @@ CREATE TABLE orders(ord_id TEXT CHECK(ord_id>4) NOT NULL,item_id TEXT NOT NULL, 
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/863a2414-cc26-43f0-8387-b2316d64bb38)
+
 
 **Question 7**
 ---
--- Create a table named Products with the following constraints:
-ProductID as INTEGER should be the primary key.
-ProductName as TEXT should be unique and not NULL.
-Price as REAL should be greater than 0.
-StockQuantity as INTEGER should be non-negative.
+![image](https://github.com/user-attachments/assets/95d59999-14cf-439a-ad43-5a08046412e8)
 
 ```sql
 CREATE TABLE Products(ProductID INT,ProductName CHAR NOT NULL,Price INT,StockQuantity INT,PRIMARY KEY(ProductID),UNIQUE(ProductName),CHECK(Price>0),CHECK(StockQuantity>0))
@@ -216,16 +193,12 @@ CREATE TABLE Products(ProductID INT,ProductName CHAR NOT NULL,Price INT,StockQua
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/c9dfba89-7ac1-44d9-995f-28f9eed37029)
+
 
 **Question 8**
 ---
--- Create a table named Employees with the following columns:
-
-EmployeeID as INTEGER
-FirstName as TEXT
-LastName as TEXT
-HireDate as DATE
+![image](https://github.com/user-attachments/assets/de3796a5-7450-44c8-8900-eca16df82d62)
 
 ```sql
 CREATE TABLE Employees(EmployeeID INTEGER,FirstName TEXT, LastName TEXT, HireDate DATE)
@@ -233,11 +206,12 @@ CREATE TABLE Employees(EmployeeID INTEGER,FirstName TEXT, LastName TEXT, HireDat
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/85a29fbc-bf9d-464a-8cdb-27d9256896e8)
+
 
 **Question 9**
 ---
--- Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
+![image](https://github.com/user-attachments/assets/7cf814c9-6a9b-4f75-b834-a314fdb6816d)
 
 ```sql
 ALTER TABLE customer ADD birth_date timestamp
@@ -245,14 +219,12 @@ ALTER TABLE customer ADD birth_date timestamp
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/eb9edd83-d6bb-4fbd-bb76-647fcc50384a)
+
 
 **Question 10**
 ---
--- Create a table named Orders with the following constraints:
-OrderID as INTEGER should be the primary key.
-OrderDate as DATE should be not NULL.
-CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
+![image](https://github.com/user-attachments/assets/4c3fe9c4-da0d-477d-8332-9ad019040f24)
 
 ```sql
 CREATE TABLE Orders(OrderID INT,OrderDate DATE NOT NULL, CustomerID INT, PRIMARY KEY(OrderID), FOREIGN KEY(CustomerID) REFERENCES Customers(CustomerID))
@@ -260,7 +232,7 @@ CREATE TABLE Orders(OrderID INT,OrderDate DATE NOT NULL, CustomerID INT, PRIMARY
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/e3eb0569-3e7a-4db6-96c3-e3acdfed1ac3)
 
 
 ## RESULT
