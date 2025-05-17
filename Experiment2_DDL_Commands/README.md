@@ -102,13 +102,17 @@ CREATE TABLE Table_Name (
   col_name3 data_type DEFAULT 'default_value'
 );
 ```
-
+---
 **Question 1**
---
--- Paste Question 1 here
+--Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Invoices(InvoiceID INT PRIMARY KEY, InvoiceDate DATE, DueDate DATE CHECK(DueDate>InvoiceDate), Amount REAL CHECK(Amount>0) )
 ```
 
 **Output:**
@@ -117,10 +121,14 @@ CREATE TABLE Table_Name (
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Create a table named Tasks with the following columns:
+
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 2
+CREATE TABLE Tasks(TaskID INTEGER,TaskName TEXT,DueDate DATE)
 ```
 
 **Output:**
@@ -129,10 +137,14 @@ CREATE TABLE Table_Name (
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE ProjectAssignments(AssignmentID INTEGER, EmployeeID INTEGER, ProjectID INTEGER, AssignmentDate DATE NOT NULL, FOREIGN KEY (EmployeeID) references Employees(EmployeeID), FOREIGN KEY (ProjectID) references Projects(ProjectID))
 ```
 
 **Output:**
@@ -141,10 +153,17 @@ CREATE TABLE Table_Name (
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE item(item_id TEXT PRIMARY KEY, item_desc TEXT NOT NULL, rate INTEGER NOT NULL,icom_id TEXT CHECK(icom_id>4),FOREIGN KEY (icom_id) references company(com_id) ON UPDATE SET NULL ON DELETE SET NULL)
 ```
 
 **Output:**
@@ -153,10 +172,11 @@ CREATE TABLE Table_Name (
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 5
+ALTER TABLE employee ADD department_id INTEGER;
+ALTER TABLE employee ADD manager_id INTEGER DEFAULT NULL
 ```
 
 **Output:**
@@ -165,10 +185,17 @@ CREATE TABLE Table_Name (
 
 **Question 6**
 ---
--- Paste Question 6 here
+--Create a new table named orders with the following specifications:
+ord_id as TEXT with a length of 4.
+item_id as TEXT.
+ord_date as DATE.
+ord_qty as INTEGER.
+cost as INTEGER.
+The primary key is a composite key consisting of item_id and ord_date.
+ord_id and item_id should not accept NULL
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE orders(ord_id TEXT CHECK(ord_id>4) NOT NULL,item_id TEXT NOT NULL, ord_date DATE, ord_qty INTEGER, cost INTEGER, PRIMARY KEY(item_id,ord_date))
 ```
 
 **Output:**
@@ -177,10 +204,14 @@ CREATE TABLE Table_Name (
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Products(ProductID INT,ProductName CHAR NOT NULL,Price INT,StockQuantity INT,PRIMARY KEY(ProductID),UNIQUE(ProductName),CHECK(Price>0),CHECK(StockQuantity>0))
 ```
 
 **Output:**
@@ -189,10 +220,15 @@ CREATE TABLE Table_Name (
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- Create a table named Employees with the following columns:
+
+EmployeeID as INTEGER
+FirstName as TEXT
+LastName as TEXT
+HireDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Employees(EmployeeID INTEGER,FirstName TEXT, LastName TEXT, HireDate DATE)
 ```
 
 **Output:**
@@ -201,10 +237,10 @@ CREATE TABLE Table_Name (
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
 
 ```sql
--- Paste your SQL code below for Question 9
+ALTER TABLE customer ADD birth_date timestamp
 ```
 
 **Output:**
@@ -213,10 +249,13 @@ CREATE TABLE Table_Name (
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Orders(OrderID INT,OrderDate DATE NOT NULL, CustomerID INT, PRIMARY KEY(OrderID), FOREIGN KEY(CustomerID) REFERENCES Customers(CustomerID))
 ```
 
 **Output:**
