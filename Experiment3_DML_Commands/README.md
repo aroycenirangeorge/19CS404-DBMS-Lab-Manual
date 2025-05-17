@@ -47,15 +47,17 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+![image](https://github.com/user-attachments/assets/b58d84df-3461-4484-b8ee-3656284ceed7)
+
 
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Products(Name, Category, Price, Stock) VALUES ('Smartphone','Electronics',800,150),('Headphones','Accessories',200,300)
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/96cf0632-b3b4-4084-87f0-9587219137bc)
+
 
 **Question 2**
 ---
