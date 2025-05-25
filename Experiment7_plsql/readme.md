@@ -34,25 +34,25 @@ END;
 - Use an `IF` statement to compare the values.
 - Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
 
-**Program:**
-```sql
-DECLARE
-    a NUMBER := 80;
-    b NUMBER := 60;
-BEGIN
-    IF a > b THEN
-        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || a);
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || b);
-    END IF;
-END;
-```
-
 **Expected Output:**  
 Greater number is: 80
 
-**Output:**  
-![image](https://github.com/user-attachments/assets/6efc0581-4fe7-4cc3-b129-015676e5a4a8)
+**ANSWER**
+```sql
+DECLARE
+   num1 NUMBER := 45;  -- You can change these values as needed
+   num2 NUMBER := 80;
+BEGIN
+   IF num1 > num2 THEN
+      DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num1);
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num2);
+   END IF;
+END;
+```
+**OUTPUT**
+![OUTPUT](https://github.com/user-attachments/assets/40470541-ed93-4f8d-88c7-090163fef3b9)
+
 ---
 
 ## 2. Write a PL/SQL program to Calculate Sum of First N Natural Numbers
@@ -63,26 +63,27 @@ Greater number is: 80
 - Use a `WHILE` loop to iterate from 1 to `n`, adding each number to the sum.
 - Display the result using `DBMS_OUTPUT.PUT_LINE`.
 
-**Program:**
-```sql
-DECLARE
-    n NUMBER := 10;
-    i NUMBER := 1;
-    sum NUMBER := 0;
-BEGIN
-    WHILE i <= n LOOP
-        sum := sum + i;
-        i := i + 1;
-    END LOOP;
-    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || sum);
-END;
-```
-
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
 
-**Output:**  
-![image](https://github.com/user-attachments/assets/c5b84f09-6d43-47f8-baf2-630ab055db47)
+**ANSWER**
+```sql
+DECLARE
+   n   NUMBER := 10;   -- You can change this value as needed
+   i   NUMBER := 1;
+   sum NUMBER := 0;
+BEGIN
+   WHILE i <= n LOOP
+      sum := sum + i;
+      i := i + 1;
+   END LOOP;
+   
+   DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || sum);
+END;
+```
+**OUTPUT**
+![image](https://github.com/user-attachments/assets/7a35a21d-90c9-4d18-ad0a-3c86aedd3337)
+
 ---
 
 ## 3. Write a PL/SQL program to generate Fibonacci series
@@ -93,35 +94,36 @@ Sum of first 10 natural numbers is: 55
 - Use a loop to generate the next terms using the formula `c = a + b`.
 - Print each term in the series.
 
-**Program:**
-```sql
-DECLARE
-    n NUMBER := 7;
-    a NUMBER := 0;
-    b NUMBER := 1;
-    c NUMBER;
-    i NUMBER := 3;
-BEGIN
-    DBMS_OUTPUT.PUT_LINE('Fibonacci sequence: ');
-    DBMS_OUTPUT.PUT_LINE(a);
-    DBMS_OUTPUT.PUT_LINE(b);
-    WHILE i <= n LOOP
-        c := a + b;
-        DBMS_OUTPUT.PUT_LINE(c);
-        a := b;
-        b := c;
-        i := i + 1;
-    END LOOP;
-END;
-
-```
-
 **Expected Output:**  
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 
-**Output:**  
-![image](https://github.com/user-attachments/assets/25efe03b-1bf3-45a3-a948-3723407c24cd)
+**ANSWER**
+```sql
+DECLARE
+   n   NUMBER := 7;      -- Number of terms to generate
+   a   NUMBER := 0;      -- First term
+   b   NUMBER := 1;      -- Second term
+   c   NUMBER;           -- Next term
+   i   NUMBER := 3;      -- Start from the 3rd term
+   output_string VARCHAR2(1000);
+BEGIN
+   output_string := a || ', ' || b;
+
+   WHILE i <= n LOOP
+      c := a + b;
+      output_string := output_string || ', ' || c;
+      a := b;
+      b := c;
+      i := i + 1;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Fibonacci sequence: ' || output_string);
+END;
+```
+**OUTPUT**
+![image](https://github.com/user-attachments/assets/71c290df-4adc-4cb2-8041-e941a956e3de)
+
 ---
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
@@ -131,32 +133,31 @@ Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 - Use a loop to extract each digit using modulo and reverse the number.
 - Display the reversed number.
 
-**Program:**
-```sql
-DECLARE
-    n NUMBER := 1535;
-    rev NUMBER := 0;
-    digit NUMBER;
-    temp NUMBER;
-BEGIN
-    temp := n;
-    WHILE temp > 0 LOOP
-        digit := MOD(temp, 10);
-        rev := rev * 10 + digit;
-        temp := TRUNC(temp / 10);
-    END LOOP;
-    DBMS_OUTPUT.PUT_LINE('Original number: ' || n);
-    DBMS_OUTPUT.PUT_LINE('Reversed number is: ' || rev);
-END;
-
-```
-
 **Expected Output:**  
 n = 1535  
 Reversed number is 5351
 
-**Output:**  
-![image](https://github.com/user-attachments/assets/07ff547b-ec12-40c2-b50a-865bfd79f8d3)
+**ANSWER**
+```sql
+DECLARE
+   n          NUMBER := 1535;   -- Original number
+   reversed   NUMBER := 0;
+   digit      NUMBER;
+   temp       NUMBER := n;
+BEGIN
+   WHILE temp > 0 LOOP
+      digit := MOD(temp, 10);                  -- Extract last digit
+      reversed := (reversed * 10) + digit;     -- Append digit to reversed number
+      temp := TRUNC(temp / 10);                -- Remove last digit
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('n = ' || n);
+   DBMS_OUTPUT.PUT_LINE('Reversed number is ' || reversed);
+END;
+```
+**OUTPUT**
+![image](https://github.com/user-attachments/assets/a99d311e-e0fc-452d-8510-6d9865006856)
+
 ---
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
@@ -166,29 +167,33 @@ Reversed number is 5351
 - Use nested `IF-ELSIF-ELSE` conditions to find the largest among the three.
 - Display the largest number.
 
-**Program:**
-```sql
-DECLARE
-    a NUMBER := 10;
-    b NUMBER := 9;
-    c NUMBER := 15;
-BEGIN
-    IF (a > b) AND (a > c) THEN
-        DBMS_OUTPUT.PUT_LINE('Largest of three numbers is: ' || a);
-    ELSIF (b > c) THEN
-        DBMS_OUTPUT.PUT_LINE('Largest of three numbers is: ' || b);
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Largest of three numbers is: ' || c);
-    END IF;
-END;
-```
-
 **Expected Output:**  
 a = 10, b = 9, c = 15  
 Largest of three number is 15
 
-**Output:**  
-![image](https://github.com/user-attachments/assets/ab2fa4b3-24fb-4fbe-966e-8ec37266249b)
+**ANSWER**
+```sql
+DECLARE
+   a NUMBER := 10;
+   b NUMBER := 9;
+   c NUMBER := 15;
+   largest NUMBER;
+BEGIN
+   IF a >= b AND a >= c THEN
+      largest := a;
+   ELSIF b >= a AND b >= c THEN
+      largest := b;
+   ELSE
+      largest := c;
+   END IF;
+
+   DBMS_OUTPUT.PUT_LINE('a = ' || a || ', b = ' || b || ', c = ' || c);
+   DBMS_OUTPUT.PUT_LINE('Largest of three number is ' || largest);
+END;
+```
+**OUTPUT**
+![image](https://github.com/user-attachments/assets/82beced0-c78d-4dc3-ba11-6a8c467cf06e)
+
 
 ## RESULT
 Thus, the PL/SQL programs using variables, conditionals, and loops were executed successfully.
